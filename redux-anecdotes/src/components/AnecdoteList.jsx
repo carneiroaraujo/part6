@@ -5,8 +5,12 @@ export default function AnecdoteList() {
     const handleVote = (id) => {
         dispatch(vote(id))
         console.log('vote', id)
-      }
-    const anecdotes = useSelector(state=>state)
+    }
+    const anecdotes = useSelector(({anecdotes, filter})=>{
+        return anecdotes.filter(anecdote=>anecdote.content.includes(filter))
+        console.log(anecdotes.filter(anecdote=>anecdote.content.includes(filter)));
+        return anecdotes.map(anecdote=>anecdote)
+    })
     return (
         <>
             {anecdotes

@@ -8,7 +8,15 @@ function Note({ note, onClick }) {
     )
 }
 function Notes() {
-    const notes = useSelector(state => state)
+    const notes = useSelector(({filter, notes}) => {
+        if (filter === "ALL") {
+            return notes
+        }
+        return filter === "IMPORTANT"
+            ? notes.filter(note => note.important)
+            : notes.filter(note => !note.important)
+
+    })
     const dispatch = useDispatch()
     return (
         <ul>
