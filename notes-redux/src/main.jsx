@@ -4,10 +4,7 @@ import { Provider } from 'react-redux'
 import App from './App.jsx'
 import noteReducer from './reducers/noteReducer.js'
 import filterReducer from './reducers/filterReducer.js'
-
 import {configureStore} from "@reduxjs/toolkit"
-
-
 
 const store = configureStore({
   reducer: {
@@ -15,7 +12,6 @@ const store = configureStore({
     filter: filterReducer
   }
 })
-
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>

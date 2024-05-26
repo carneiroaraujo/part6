@@ -18,24 +18,22 @@ function generateId() {
 
 const noteSlice = createSlice({
     name: "notes",
-    initialState,
+    initialState: [],
     reducers: {
         createNote(state, action) {
-            const content = action.payload
-            state.push({
-                content,
-                important: false,
-                id: generateId()
-            })
+            state.push(action.payload)
         },
-        toggleImportanceOf(state, {id}) {
+        toggleImportanceOf(state, {payload}) {
             console.log(current(state));
-            return state.map(note => note.id===id ? {...note, important:!note.important} : note)
+            return state.map(note => note.id===payload ? {...note, important:!note.important} : note)
+        },
+        setNotes(state, action) {
+            return action.payload
         }
     }
 })
 
-export const { createNote, toggleImportanceOf} = noteSlice.actions
+export const { createNote, toggleImportanceOf, appendNote, setNotes} = noteSlice.actions
 export default noteSlice.reducer
 
 

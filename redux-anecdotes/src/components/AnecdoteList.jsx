@@ -14,6 +14,8 @@ export default function AnecdoteList() {
     const anecdotes = useSelector(({anecdotes, filter})=>{
         return anecdotes.filter(anecdote=>anecdote.content.includes(filter))
     })
+
+    
     return (
         <>
             {anecdotes
