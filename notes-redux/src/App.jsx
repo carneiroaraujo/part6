@@ -5,14 +5,12 @@ import Notes from "./components/Notes"
 import VisibilityFilter from "./components/VisibilityFilter"
 
 import noteService from "./services/notes.js"
-import { setNotes } from "./reducers/noteReducer"
+import { initializeNotes, setNotes } from "./reducers/noteReducer"
 
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
-    noteService.getAll().then(n=>{
-      dispatch(setNotes(n))
-    })
+    dispatch(initializeNotes())
   }, [])  
 
   return (

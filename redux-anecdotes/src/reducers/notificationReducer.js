@@ -4,7 +4,7 @@ const slice = createSlice({
     name: "notification",
     initialState: {isVisible: false, content: null},
     reducers: {
-        setNotification(state, {payload}) {
+        setContent(state, {payload}) {
             console.log("hi");
             return {
                 isVisible: true,
@@ -17,5 +17,16 @@ const slice = createSlice({
     }
 })
 
-export const {setNotification, hideNotification} = slice.actions
+const {setContent, hideNotification} = slice.actions
+
+export function notify(content, duration) {
+    return async function (dispatch) {
+        dispatch(setContent(content))
+        setTimeout(() => {
+            dispatch(hideNotification())
+        }, duration*1000)
+    }
+}
+
+
 export default slice.reducer

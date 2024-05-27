@@ -12,6 +12,10 @@ async function createNew(content) {
         votes: 0
     })).data
 }
+async function vote(id, newObj) {
+    console.log(newObj);
+    return (await axios.put(baseUrl+"/"+id, newObj)).data
+}
 
 
-export default {getAll, createNew}
+export default {getAll, createNew, vote}
